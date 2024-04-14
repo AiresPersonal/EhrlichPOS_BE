@@ -24,6 +24,17 @@ namespace EhrlichPOS_BE.Dto
             .ForMember(e => e.PizzaType, s => s.MapFrom(r => r.PizzaType.Name))
             .ForMember(e => e.Size, s => s.MapFrom(r => r.Size))
             .ForMember(e => e.Price, s => s.MapFrom(r => r.Price));
+
+            CreateMap<OrderDto, Order>();
+            CreateMap<Order, OrderDto>()
+            .ForMember(e => e.OrderId, s => s.MapFrom(r => r.OrderId))
+            .ForMember(e => e.Date, s => s.MapFrom(r => r.Date));
+
+            CreateMap<OrderDetail, PostOrderDetailsDto>()
+            .ForMember(e => e.OrderDetailsId, s => s.MapFrom(r => r.OrderDetailsId))
+            .ForMember(e => e.OrderId, s => s.MapFrom(r => r.OrderId))
+            .ForMember(e => e.PizzaId, s => s.MapFrom(r => r.PizzaId))
+            .ForMember(e => e.Quantity, s => s.MapFrom(r => r.Quantity));
         }
     }
 }

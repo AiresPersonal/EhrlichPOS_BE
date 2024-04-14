@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IPizzaType, PizzaTypeService>();
 builder.Services.AddScoped<IPizza, PizzaService>();
+builder.Services.AddScoped<IOrder, OrderService>();
 
 var connectionString = $"Data Source=.;Initial Catalog=EhrlichPOS; Integrated Security=True; TrustServerCertificate=True";
 builder.Services.AddDbContext<EhrlichPosContext>(opt => opt.UseSqlServer(connectionString));

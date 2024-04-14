@@ -61,7 +61,7 @@ namespace EhrlichPOS_BE.Migrations
                 name: "order_details",
                 columns: table => new
                 {
-                    order_details_id = table.Column<int>(type: "int", nullable: false),
+                    order_details_id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     order_id = table.Column<int>(type: "int", nullable: false),
                     pizza_id = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false)
