@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = $"Data Source=.;Initial Catalog=EhrlichPOS; Integrated Security=True; TrustServerCertificate=True";
-builder.Services.AddDbContext<PosContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddDbContext<EhrlichPosContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
