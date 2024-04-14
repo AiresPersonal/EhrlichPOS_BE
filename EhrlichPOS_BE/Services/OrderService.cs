@@ -17,6 +17,11 @@ namespace EhrlichPOS_BE.Services
             _context = context;
             _mapper = mapper;
         }
+
+        /// <summary>
+        /// Get list of order
+        /// </summary>
+        /// <returns>list of order</returns>
         public async Task<IEnumerable<dynamic>> GetOrders() 
         {
             try
@@ -30,6 +35,11 @@ namespace EhrlichPOS_BE.Services
             }
         }
 
+        /// <summary>
+        /// Get specific order
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns>order</returns>
         public async Task<dynamic> GetOrder(int orderId)
         {
             try
@@ -43,12 +53,22 @@ namespace EhrlichPOS_BE.Services
             }
         }
 
+        /// <summary>
+        /// Get list of order details
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns>order</returns>
         public async Task<IEnumerable<dynamic>> GetOrderDetails() 
         {
             var query = _context.OrderDetails.OrderByDescending(e => e.OrderDetailsId).Take(1000);  // Get only the top 1000 for testing purposes
             return await Task.FromResult(query);
         }
 
+        /// <summary>
+        /// Get order details
+        /// </summary>
+        /// <param name="orderDetailsId"></param>
+        /// <returns>order details</returns>
         public async Task<dynamic> GetOrderDetailsById(int orderDetailsId) 
         {
             try
@@ -62,6 +82,11 @@ namespace EhrlichPOS_BE.Services
             }
         }
 
+        /// <summary>
+        /// Add Order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns>List of Order Details</returns>
         public async Task<IEnumerable<dynamic>> PostOrder(IEnumerable<PostOrder> order) 
         {
             try
@@ -89,6 +114,11 @@ namespace EhrlichPOS_BE.Services
             }
         }
 
+        /// <summary>
+        /// Delete specific order details
+        /// </summary>
+        /// <param name="orderDetails"></param>
+        /// <returns>string</returns>
         public async Task<dynamic> DeleteOrderDetails(OrderDetail orderDetails)
         {
             try
@@ -103,6 +133,11 @@ namespace EhrlichPOS_BE.Services
             }
         }
 
+        /// <summary>
+        /// Delete order and corresponding order details
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns>string</returns>
         public async Task<dynamic> DeleteOrder(Order order) 
         {
             try
