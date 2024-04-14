@@ -1,8 +1,8 @@
 using EhrlichPOS_BE;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using EhrlichPOS_BE.Interfaces;
+using EhrlichPOS_BE.Models;
+using EhrlichPOS_BE.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped<IPizzaType, PizzaTypeService>();
+builder.Services.AddScoped<IPizza, PizzaService>();
 
 var connectionString = $"Data Source=.;Initial Catalog=EhrlichPOS; Integrated Security=True; TrustServerCertificate=True";
 builder.Services.AddDbContext<EhrlichPosContext>(opt => opt.UseSqlServer(connectionString));
